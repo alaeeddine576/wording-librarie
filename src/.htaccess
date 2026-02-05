@@ -1,0 +1,12 @@
+# Fichier: public/.htaccess
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Si le fichier ou dossier demandé n'existe pas...
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^ - [L]
+
+  # ... alors on renvoie tout vers index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
