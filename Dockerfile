@@ -31,7 +31,7 @@ RUN sed -i \
 # On copie les fichiers compilés de l'étape 1 vers le dossier public d'Apache
 # ⚠️ ATTENTION : Vérifie si ton dossier dist contient "browser". 
 # Si oui, garde "/browser". Sinon, retire-le.
-COPY --from=build-stage /app/dist/mon-app-angular/browser /usr/local/apache2/htdocs/
+COPY --from=build-stage /app/dist/project-library/browser /usr/local/apache2/htdocs/
 
 # On expose le port 80 (standard web)
 EXPOSE 80
