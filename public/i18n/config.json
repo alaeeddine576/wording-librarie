@@ -1,0 +1,9 @@
+{
+    "version": "3",
+    "active_languages": [
+        "fr",
+        "en",
+        "es"
+    ],
+    "default_lang": "fr"
+}
