@@ -1,59 +1,45 @@
-# ProjectLibrary
+# Project Library (Angular 16)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+Calculatrice de version et gestion de wording (Downgraded to Angular 16).
 
-## Development server
+## Prérequis
 
-To start a local development server, run:
+- **Node.js** : Version 16 ou 18 recommandée (LTS).
+- **npm** : Version 8 ou 9.
 
-```bash
-ng serve
-```
+## Installation et Lancement
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1.  **Cloner le projet** :
+    ```bash
+    git clone <URL_DU_REPO>
+    cd project-library
+    ```
 
-## Code scaffolding
+2.  **Installer les dépendances** :
+    ```bash
+    npm install
+    ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+3.  **Lancer le serveur de développement** :
+    ```bash
+    npm start
+    # ou
+    ng serve
+    ```
+    L'application sera accessible sur `http://localhost:4200`.
 
-```bash
-ng generate component component-name
-```
+4.  **Builder pour la production** :
+    ```bash
+    npm run build
+    ```
+    Les fichiers compilés seront dans `dist/project-library`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Docker
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Pour lancer avec Docker :
 
 ```bash
-ng test
+docker build -t app-angular .
+docker run -d -p 8080:80 app-angular
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Accès sur `http://localhost:8080`.
