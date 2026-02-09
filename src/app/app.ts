@@ -7,7 +7,7 @@ import { WordingService } from './core/services/wording.service';
   standalone: true,
   imports: [TranslatePipe],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class AppComponent {
   private wordingService = inject(WordingService);
