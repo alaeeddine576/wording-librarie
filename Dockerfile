@@ -12,26 +12,28 @@ RUN npm install
 # On copie tout le reste du code
 COPY . .
 
-# On lance la compilation (le build)
+# On lance la compilation
 RUN npm run build -- --configuration production
 
-# --- Étape 2 : On prépare le serveur Apache ---
+# --- Étape 2 : On prépare le serveur Apache (Serveur Unique) ---
 FROM httpd:2.4-alpine as production-stage
 
-# On active le module Rewrite (indispensable pour le .htaccess d'Angular)
+# Configuration Apache (Rewrite et AllowOverride pour Angular)
 RUN sed -i \
     '/LoadModule rewrite_module modules\/mod_rewrite.so/s/^#//g' \
     /usr/local/apache2/conf/httpd.conf
 
-# On autorise le fichier .htaccess à écraser la config (AllowOverride All)
 RUN sed -i \
     's#AllowOverride [Nn]one#AllowOverride All#' \
     /usr/local/apache2/conf/httpd.conf
 
-# On copie les fichiers compilés de l'étape 1 vers le dossier public d'Apache
-# ⚠️ ATTENTION : Vérifie si ton dossier dist contient "browser". 
-# Si oui, garde "/browser". Sinon, retire-le.
+# 1. On copie l'application Angular (Le Site)
+# ⚠️ Vérifie bien que c'est le bon chemin dist/.../browser
 COPY --from=build-stage /app/dist/project-library/browser /usr/local/apache2/htdocs/
 
-# On expose le port 80 (standard web)
+# 2. On copie les fichiers de config (Les Données)
+# On prend le contenu du dossier local "cloud-data/i18n" et on le met dans un dossier "i18n" sur le serveur
+COPY cloud-data/i18n /usr/local/apache2/htdocs/i18n/
+
+# On expose le port 80
 EXPOSE 80

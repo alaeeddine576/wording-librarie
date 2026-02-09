@@ -19,8 +19,8 @@ export class WordingService {
 
         try {
             // Étape A : Récupérer la config version
-            // On pointe désormais vers votre sserveur de config distant
-            const baseUrl = 'https://famous-piroshki-cb8db3.netlify.app/i18n';
+            // On pointe désormais vers votre serveur de config local
+            const baseUrl = 'http://localhost:8080/i18n';
 
             const config = await firstValueFrom(this.http.get<any>(`${baseUrl}/config.json`));
             const serverVersion = config.version;

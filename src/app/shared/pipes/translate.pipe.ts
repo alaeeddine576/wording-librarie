@@ -12,4 +12,4 @@ export class TranslatePipe implements PipeTransform {
     transform(key: string): string {
         return this.wordingService.get(key);
     }
-}
+}            
